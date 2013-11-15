@@ -9,7 +9,7 @@
     /// </summary>
     [TestClass]
     [ExcludeFromCodeCoverage]
-    public class EnumExtensions
+    public class EnumExtensionsTests
     {
         #region Constants
 

@@ -18,17 +18,17 @@
         ///     The wrap_ given long wrap length_ expect minimal splitting.
         /// </summary>
         [TestMethod]
-        public void Wrap_GivenLongWrapLength_ExpectMinimalSplitting()
+        public void WrapGivenLongWrapLengthExpectMinimalSplitting()
         {
             // arrange
-            string startString = "the quick brown fox jumped over the lazy dog.";
-            int maxLineLength = 10;
+            const string StartString = "the quick brown fox jumped over the lazy dog.";
+            const int MaxLineLength = 10;
             string expectedString = string.Format(
                 "the quick{0}brown fox{0}jumped{0}over the{0}lazy dog.", 
                 Environment.NewLine);
 
             // act
-            string actualString = startString.Wrap(maxLineLength);
+            string actualString = StartString.Wrap(MaxLineLength);
 
             // assert
             Assert.AreEqual(expectedString, actualString);
@@ -38,15 +38,15 @@
         ///     The wrap_ given possibility to split mid word_ expect split before.
         /// </summary>
         [TestMethod]
-        public void Wrap_GivenPossibilityToSplitMidWord_ExpectSplitBefore()
+        public void WrapGivenPossibilityToSplitMidWordExpectSplitBefore()
         {
             // arrange
-            string startString = "say hello to my little friend";
-            int maxLineLength = 4;
-            string expectedString = startString.Replace(" ", Environment.NewLine);
+            const string StartString = "say hello to my little friend";
+            const int MaxLineLength = 4;
+            string expectedString = StartString.Replace(" ", Environment.NewLine);
 
             // act
-            string actualString = startString.Wrap(maxLineLength);
+            string actualString = StartString.Wrap(MaxLineLength);
 
             // assert
             Assert.AreEqual(expectedString, actualString);
@@ -56,15 +56,15 @@
         ///     The wrap_ given string to wrap_ expect two lines.
         /// </summary>
         [TestMethod]
-        public void Wrap_GivenStringToWrap_ExpectTwoLines()
+        public void WrapGivenStringToWrapExpectTwoLines()
         {
             // arrange
-            string startString = "hello world";
-            int maxLineLength = 5;
-            string expectedString = startString.Replace(" ", Environment.NewLine);
+            const string StartString = "hello world";
+            const int MaxLineLength = 5;
+            string expectedString = StartString.Replace(" ", Environment.NewLine);
 
             // act
-            string actualString = startString.Wrap(maxLineLength);
+            string actualString = StartString.Wrap(MaxLineLength);
 
             // assert
             Assert.AreEqual(expectedString, actualString);
@@ -74,35 +74,35 @@
         ///     The wrap_ given unevenly wrappable string_ expect split at minimum.
         /// </summary>
         [TestMethod]
-        public void Wrap_GivenUnevenlyWrappableString_ExpectSplitAtMinimum()
+        public void WrapGivenUnevenlyWrappableStringExpectSplitAtMinimum()
         {
             // arrange
-            string startString = "say hello to my little friend";
-            int maxLineLength = 6;
-            string expectedString = "say\r\nhello\r\nto my\r\nlittle\r\nfriend";
+            const string StartString = "say hello to my little friend";
+            const int MaxLineLength = 6;
+            const string ExpectedString = "say\r\nhello\r\nto my\r\nlittle\r\nfriend";
 
             // act
-            string actualString = startString.Wrap(maxLineLength);
+            string actualString = StartString.Wrap(MaxLineLength);
 
             // assert
-            Assert.AreEqual(expectedString, actualString);
+            Assert.AreEqual(ExpectedString, actualString);
         }
 
         /// <summary>
         ///     The wrap_ given unwrappable string_ expect one line.
         /// </summary>
         [TestMethod]
-        public void Wrap_GivenUnwrappableString_ExpectOneLine()
+        public void WrapGivenUnwrappableStringExpectOneLine()
         {
             // arrange
-            string startString = "helloworld";
-            int maxLineLength = 5;
+            const string StartString = "helloworld";
+            const int MaxLineLength = 5;
 
             // act
-            string actualString = startString.Wrap(maxLineLength);
+            string actualString = StartString.Wrap(MaxLineLength);
 
             // assert
-            Assert.AreEqual(startString, actualString);
+            Assert.AreEqual(StartString, actualString);
         }
 
         #endregion

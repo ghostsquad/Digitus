@@ -24,7 +24,7 @@
             const string StartString = "the quick brown fox jumped over the lazy dog.";
             const int MaxLineLength = 10;
             string expectedString = string.Format(
-                "the quick{0}brown fox{0}jumped{0}over the{0}lazy dog.", 
+                "the quick{0}brown fox{0}jumped{0}over the{0}lazy dog.",
                 Environment.NewLine);
 
             // act
@@ -123,6 +123,74 @@
             Assert.AreEqual(StartString, actualString);
         }
 
+        [TestMethod]
+        public void CapitalizeWords()
+        {
+            // arrange
+            const string startString = "delta india golf india tango uniform sierra";
+            const string expectedString = "Delta India Golf India Tango Uniform Sierra";
+
+            // act
+            var result = startString.CapitalizeWords();
+
+            // assert
+            Assert.AreEqual<string>(expectedString, result, "The output string is not the one expected.");
+        }
+
+        [TestMethod]
+        public void CapitalizeWordsContainingDefaultIgnoredWords()
+        {
+            // arrange
+            const string startString = "pack my box with five dozen liquor jugs";
+            const string expectedString = "Pack my Box with Five Dozen Liquor Jugs";
+
+            //act
+            var result = startString.CapitalizeWords();
+
+            // assert
+            Assert.AreEqual<string>(expectedString, result, "The output string is not the one expected.");
+        }
+
+        [TestMethod]
+        public void CapitalizeWordsContainingDefaultIgnoredWordsButFirstIsIgnored()
+        {
+            // arrange
+            const string startString = "the quick brown fox jumps over the lazy dog";
+            const string expectedString = "The Quick Brown Fox Jumps over the Lazy Dog";
+
+            // act
+            var result = startString.CapitalizeWords();
+
+            // assert
+            Assert.AreEqual<string>(expectedString, result, "The output string is not the one expected.");
+        }
+
+        [TestMethod]
+        public void CapitalizeWordsEmptyString()
+        {
+            // arrange
+            string startString = string.Empty;
+
+            // act
+            var result = startString.CapitalizeWords();
+
+            // assert
+            Assert.AreEqual<string>(string.Empty, result, "The output string is not the one expected.");
+        }
+
+        [TestMethod]
+        public void CapitalizeWordsSpacesInBetween()
+        {
+            // arrange
+            const string startString = "a quick  movement   of     the      enemy will jeopardize six gunboats";
+            const string expectedString = "A Quick  Movement   of     the      Enemy will Jeopardize Six Gunboats";
+
+            // act
+            var result = startString.CapitalizeWords();
+
+            // assert
+            Assert.AreEqual<string>(expectedString, result, "The output string is not the one expected.");
+        }
         #endregion
     }
 }

@@ -15,6 +15,11 @@
         /// </summary>
         private const char DefaultWrapOn = ' ';
 
+        /// <summary>
+        /// The list of default words that should not be capitalized.
+        /// </summary>
+        private static string[] DefaultUncapitalizedWords = new string[] { };
+
         #endregion
 
         #region Public Methods and Operators
@@ -53,7 +58,7 @@
         /// </returns>
         public static string Wrap(this string theString, char wrapOn, int maxLineLength)
         {
-            var wrappedStringBuilder = new StringBuilder();            
+            var wrappedStringBuilder = new StringBuilder();
 
             var startIndex = 0;
             var lastIndexOfWrapOnCharacter = -1;
@@ -80,12 +85,12 @@
                 // finally, startIndex should be currentIndex + 2 (or +1 if it's after the increment above)
                 // then we "continue" to avoid executing the remaining checks in the loop
                 if (i + 1 < theString.Length && theString.Substring(i, 2) == Environment.NewLine)
-                {                                        
-                    wrappedStringBuilder.Append(theString.Substring(startIndex, (++i + 1) - startIndex));                    
+                {
+                    wrappedStringBuilder.Append(theString.Substring(startIndex, (++i + 1) - startIndex));
                     lastIndexOfWrapOnCharacter = -1;
                     startIndex = i + 1;
                     continue;
-                }                
+                }
 
                 // if our current substring length (current location - start index) is greater than or equal                
                 // to the maxlineLength, and we found a wrap character prior (keeps from wrapping mid word)
@@ -116,11 +121,32 @@
             }
 
             //when we get to the end of the loop, we can just append the remainder to the string builder
-            wrappedStringBuilder.Append(theString.Substring(startIndex));            
+            wrappedStringBuilder.Append(theString.Substring(startIndex));
 
             return wrappedStringBuilder.ToString();
         }
 
+
+        /// <summary>
+        /// Returns the string with the words capitilized.
+        /// </summary>
+        /// <param name="theString">The string to capitalize.</param>
+        /// <param name="excludedWords">A list of words that should be excluded from capitalization.</param>
+        /// <returns>The string capitalized.</returns>
+        public static string CapitalizeWords(this string theString, string[] excludedWords)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Returns the string with the words capitilized.
+        /// </summary>
+        /// <param name="theString">The string to capitalize.</param>
+        /// <returns>The string capitalized.</returns>
+        public static string CapitalizeWords(this string theString)
+        {
+            return CapitalizeWords(theString, DefaultUncapitalizedWords);
+        }
         #endregion
     }
 }

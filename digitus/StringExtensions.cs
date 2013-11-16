@@ -121,6 +121,11 @@
             return wrappedStringBuilder.ToString();
         }
 
+        public static string WithNewLine(this string theString)
+        {
+            return new StringBuilder(2).Append(theString).Append(Environment.NewLine).ToString();            
+        }
+
         #endregion
     }
 }

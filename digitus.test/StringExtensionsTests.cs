@@ -2,6 +2,7 @@
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using Ploeh.AutoFixture;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -121,6 +122,21 @@
 
             // assert
             Assert.AreEqual(StartString, actualString);
+        }
+
+        [TestMethod]
+        public void WithNewLineGivenStringExpectNewLineAtEnd()
+        {
+            // arrange
+            var fixture = new Fixture();
+            var startString = fixture.Create<string>();
+            var expectedString = startString + Environment.NewLine;
+
+            // act
+            var actualString = startString.WithNewLine();
+
+            // assert
+            Assert.AreEqual(expectedString, actualString);
         }
 
         #endregion

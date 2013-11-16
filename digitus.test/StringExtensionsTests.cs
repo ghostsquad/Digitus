@@ -35,6 +35,24 @@
         }
 
         /// <summary>
+        /// The wrap given new lines mid string expect excluded from wrap logic.
+        /// </summary>
+        [TestMethod]
+        public void WrapGivenNewLinesMidStringExpectExcludedFromWrapLogic()
+        {
+            // arrange
+            const string StartString = "houston we\r\nhave a newline";
+            const int MaxLineLength = 10;
+            const string ExpectedString = "houston we\r\nhave a\r\nnewline";
+
+            // act
+            var actualString = StartString.Wrap(MaxLineLength);
+
+            // assert
+            Assert.AreEqual(ExpectedString, actualString);
+        }
+
+        /// <summary>
         ///     The wrap_ given possibility to split mid word_ expect split before.
         /// </summary>
         [TestMethod]

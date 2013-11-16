@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EnumExtensions.cs" />
+    <Compile Include="EnumExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\digitus\digitus.csproj">

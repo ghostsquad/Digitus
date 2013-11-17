@@ -1,4 +1,4 @@
-﻿namespace digitus
+﻿namespace Digitus
 {
     using System;
 

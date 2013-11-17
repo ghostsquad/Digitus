@@ -7,8 +7,8 @@
     <ProjectGuid>{E4DA0991-C8C8-4A5F-BA29-09792529915B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>digitus</RootNamespace>
-    <AssemblyName>digitus</AssemblyName>
+    <RootNamespace>Digitus</RootNamespace>
+    <AssemblyName>Digitus</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

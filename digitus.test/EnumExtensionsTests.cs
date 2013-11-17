@@ -1,4 +1,4 @@
-﻿namespace digitus.test
+﻿namespace Digitus.Test
 {
     using System.Diagnostics.CodeAnalysis;
 

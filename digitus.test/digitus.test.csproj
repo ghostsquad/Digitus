@@ -64,9 +64,9 @@
     <Compile Include="EnumExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\digitus\digitus.csproj">
+    <ProjectReference Include="..\digitus\Digitus.csproj">
       <Project>{e4da0991-c8c8-4a5f-ba29-09792529915b}</Project>
-      <Name>digitus</Name>
+      <Name>Digitus</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

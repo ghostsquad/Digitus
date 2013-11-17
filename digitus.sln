@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitus", "digitus\digitus.csproj", "{E4DA0991-C8C8-4A5F-BA29-09792529915B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digitus", "Digitus\Digitus.csproj", "{E4DA0991-C8C8-4A5F-BA29-09792529915B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digitus.test", "digitus.test\digitus.test.csproj", "{C3B94BE7-AECF-4727-868E-85F01ABE344A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digitus.Test", "Digitus.Test\Digitus.Test.csproj", "{C3B94BE7-AECF-4727-868E-85F01ABE344A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

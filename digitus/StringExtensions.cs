@@ -22,26 +22,26 @@
         /// <summary>
         /// The with new line.
         /// </summary>
-        /// <param name="theString">
+        /// <param name="value">
         /// The the string.
         /// </param>
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public static string WithNewLine(this string theString)
+        public static string WithNewLine(this string value)
         {
-            if (theString == null)
+            if (value == null)
             {
                 return null;
             }
 
-            return new StringBuilder(2).Append(theString).Append(Environment.NewLine).ToString();
+            return new StringBuilder(2).Append(value).Append(Environment.NewLine).ToString();
         }
 
         /// <summary>
         /// The wrap.
         /// </summary>
-        /// <param name="theString">
+        /// <param name="value">
         /// The the string.
         /// </param>
         /// <param name="maxLineLength">
@@ -50,19 +50,20 @@
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public static string Wrap(this string theString, int maxLineLength)
+        public static string Wrap(this string value, int maxLineLength)
         {
-            return theString.Wrap(DefaultWrapOn, maxLineLength);
+            return value.Wrap(DefaultWrapOn, maxLineLength);
         }
 
         /// <summary>
-        /// The wrap.
+        /// Wraps a string, using the wrapOn character as applicable position to wrap. 
+        /// Wraps occur as close to the maxLineLength without going over.
         /// </summary>
-        /// <param name="theString">
-        /// The the string.
+        /// <param name="value">
+        /// The value.
         /// </param>
         /// <param name="wrapOn">
-        /// The wrap on.
+        /// The wrap on character.
         /// </param>
         /// <param name="maxLineLength">
         /// The max line length.
@@ -70,17 +71,17 @@
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public static string Wrap(this string theString, char wrapOn, int maxLineLength)
+        public static string Wrap(this string value, char wrapOn, int maxLineLength)
         {
             var wrappedStringBuilder = new StringBuilder();            
 
             var startIndex = 0;
             var lastIndexOfWrapOnCharacter = -1;
 
-            for (int i = 0; i < theString.Length; i++)
+            for (int i = 0; i < value.Length; i++)
             {
                 // check if the current character matches the character we can wrap on (replace with newline)
-                if (theString[i] == wrapOn)
+                if (value[i] == wrapOn)
                 {
                     lastIndexOfWrapOnCharacter = i;
                 }
@@ -98,11 +99,11 @@
                 // we also need to reset our lastIndexOfWrapChar back to -1 to indicate we have not yet stumbled across a new wrapOn char (space)
                 // finally, startIndex should be currentIndex + 2 (or +1 if it's after the increment above)
                 // then we "continue" to avoid executing the remaining checks in the loop
-                if (i + 1 < theString.Length && theString.Substring(i, 2) == Environment.NewLine)
+                if (i + 1 < value.Length && value.Substring(i, 2) == Environment.NewLine)
                 {
-                    wrappedStringBuilder.Append(theString.Substring(startIndex, (++i + 1) - startIndex));                    
+                    wrappedStringBuilder.Append(value.Substring(startIndex, (++i + 1) - startIndex));                    
                     lastIndexOfWrapOnCharacter = -1;
-                    while (i + 1 < theString.Length && theString[i + 1] == ' ')
+                    while (i + 1 < value.Length && value[i + 1] == ' ')
                     {
                         i++;
                     }
@@ -128,14 +129,14 @@
                 if ((i - startIndex) >= maxLineLength && lastIndexOfWrapOnCharacter > 0)
                 {
                     wrappedStringBuilder.AppendLine(
-                        theString.Substring(startIndex, lastIndexOfWrapOnCharacter - startIndex));                    
+                        value.Substring(startIndex, lastIndexOfWrapOnCharacter - startIndex));                    
 
                     // then we need to set our start index to the character after our lastIndexOfWrapChar
                     // at lastIndexOfWrapChar 2 (the space)
                     // our newStart becomes 3 (the "m")
                     // we set lastIndexOfWrapChar back to -1 to indicate we have not yet stumbled across a new wrapOn char (space)
                     startIndex = lastIndexOfWrapOnCharacter + 1;
-                    while (startIndex + 1 < theString.Length && theString[startIndex] == ' ')
+                    while (startIndex + 1 < value.Length && value[startIndex] == ' ')
                     {
                         startIndex++;
                     }
@@ -145,7 +146,7 @@
             }
 
             // when we get to the end of the loop, we can just append the remainder to the string builder
-            wrappedStringBuilder.Append(theString.Substring(startIndex));            
+            wrappedStringBuilder.Append(value.Substring(startIndex).TrimStart());
 
             return wrappedStringBuilder.ToString();
         }

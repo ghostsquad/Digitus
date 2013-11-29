@@ -203,6 +203,37 @@
             Assert.AreEqual(expectedString, actualString);
         }
 
+        [TestMethod]
+        public void WrapGivenManySpacesExpectWrapInMiddle()
+        {
+            // arrange
+            var value = new string(' ', 7);           
+            var expected = new string(' ', 3) + Environment.NewLine;
+            const int MaxLineLength = 3;
+
+            // act
+            var actual = value.Wrap(MaxLineLength);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void WrapGivenManySpacesAndNewLineExpectNoWrap()
+        {
+            // arrange
+            var expectedPart = new string(' ', 3);
+            var expected = expectedPart + Environment.NewLine;
+            var value = expected + expectedPart;
+            const int MaxLineLength = 3;
+
+            // act
+            var actual = value.Wrap(MaxLineLength);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
         #endregion
     }
 }

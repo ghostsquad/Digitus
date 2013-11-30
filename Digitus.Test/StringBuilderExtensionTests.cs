@@ -91,7 +91,7 @@
         /// The prepend given string expect new line before string.
         /// </summary>
         [TestMethod]
-        public void PrependGivenStringExpectNewLineBeforeString()
+        public void AppendLineBeforeGivenStringExpectNewLineBeforeString()
         {
             // arrange
             var fixture = new Fixture();
@@ -100,7 +100,7 @@
             var sb = new StringBuilder();
 
             // act
-            string actual = sb.PrependLine(value).ToString();
+            string actual = sb.AppendLineBefore(value).ToString();
 
             // assert
             Assert.AreEqual(expected, actual);

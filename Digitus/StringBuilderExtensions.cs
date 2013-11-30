@@ -79,9 +79,9 @@
         /// <returns>
         /// The <see cref="StringBuilder"/>.
         /// </returns>
-        public static StringBuilder PrependLine(this StringBuilder sb, string value)
+        public static StringBuilder AppendLineBefore(this StringBuilder sb, string value)
         {
-            return sb.Append(Environment.NewLine).Append(value);
+            return sb.AppendLine().Append(value);
         }
 
         #endregion

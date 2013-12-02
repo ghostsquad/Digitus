@@ -17,6 +17,132 @@
         #region Public Methods and Operators
 
         /// <summary>
+        /// The picky replace given exclude expect inside untouched.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenExcludeExpectInsideUntouched()
+        {
+            // arrange
+            const string Value = "aaa<aaa>aaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = "bbb<aaa>bbb";
+
+            // act
+            string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.ExcludeBetween);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
+        /// The picky replace given include expect outside untouched.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenIncludeExpectOutsideUntouched()
+        {
+            // arrange
+            const string Value = "aaa<aaa>aaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = "aaa<bbb>aaa";
+
+            // act
+            string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.IncludeBetween);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
+        /// The picky replace given no start exclude expect all applicable for replacement.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenNoStartExcludeExpectAllApplicableForReplacement()
+        {
+            // arrange
+            const string Value = "aaa>aaaaaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = "bbb<bbbbbb";
+
+            // act
+            string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.ExcludeBetween);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
+        /// The picky replace given no start include expect nothing applicable for replacement.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenNoStartIncludeExpectNothingApplicableForReplacement()
+        {
+            // arrange
+            const string Value = "aaa>aaaaaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = Value;
+
+            // act
+            string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.IncludeBetween);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
+        /// The picky replace given start no end exclude expect all after start not applicable for replacement.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenStartNoEndExcludeExpectAllAfterStartNotApplicableForReplacement()
+        {
+            // arrange
+            const string Value = "aaa<aaaaaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = "bbb<aaaaaa";
+
+            // act
+            string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.ExcludeBetween);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
+        /// The picky replace given start no end include expect all after start applicable for replacement.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenStartNoEndIncludeExpectAllAfterStartApplicableForReplacement()
+        {
+            // arrange
+            const string Value = "aaa<aaaaaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = "aaa<bbbbbb";
+
+            // act
+            string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.IncludeBetween);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
         ///     Given a null string,
         ///     When "WithNewLine()" invoked,
         ///     Expected null return.
@@ -81,6 +207,25 @@
         }
 
         /// <summary>
+        ///     The wrap given many spaces and new line expect no wrap.
+        /// </summary>
+        [TestMethod]
+        public void WrapGivenManySpacesAndNewLineExpectNoWrap()
+        {
+            // arrange
+            var expectedPart = new string(' ', 3);
+            string expected = expectedPart + Environment.NewLine;
+            string value = expected + expectedPart;
+            const int MaxLineLength = 3;
+
+            // act
+            string actual = value.Wrap(MaxLineLength);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         ///     Given a string with multiple consecutive spaces,
         ///     When "Wrap()" invoked,
         ///     Expect TrimLeft() after NewLine.
@@ -100,6 +245,24 @@
 
             // assert
             Assert.AreEqual(ExpectedString, actualString);
+        }
+
+        /// <summary>
+        ///     The wrap given many spaces expect wrap in middle.
+        /// </summary>
+        [TestMethod]
+        public void WrapGivenManySpacesExpectWrapInMiddle()
+        {
+            // arrange
+            var value = new string(' ', 7);
+            string expected = new string(' ', 3) + Environment.NewLine;
+            const int MaxLineLength = 3;
+
+            // act
+            string actual = value.Wrap(MaxLineLength);
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -201,37 +364,6 @@
 
             // assert
             Assert.AreEqual(expectedString, actualString);
-        }
-
-        [TestMethod]
-        public void WrapGivenManySpacesExpectWrapInMiddle()
-        {
-            // arrange
-            var value = new string(' ', 7);           
-            var expected = new string(' ', 3) + Environment.NewLine;
-            const int MaxLineLength = 3;
-
-            // act
-            var actual = value.Wrap(MaxLineLength);
-
-            // assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void WrapGivenManySpacesAndNewLineExpectNoWrap()
-        {
-            // arrange
-            var expectedPart = new string(' ', 3);
-            var expected = expectedPart + Environment.NewLine;
-            var value = expected + expectedPart;
-            const int MaxLineLength = 3;
-
-            // act
-            var actual = value.Wrap(MaxLineLength);
-
-            // assert
-            Assert.AreEqual(expected, actual);
         }
 
         #endregion

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PickyReplaceOptions.cs" />
     <Compile Include="EnumDisplayNameAttribute.cs" />
     <Compile Include="EnumExtensions.cs" />
     <Compile Include="PlainTextStyling\Components\Border.cs" />

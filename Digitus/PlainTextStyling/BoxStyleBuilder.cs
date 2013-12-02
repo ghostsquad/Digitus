@@ -206,26 +206,27 @@
             // maxlinelength + spacing left + spacing right
             var topSpacing = new List<string>();
             var bottomSpacing = new List<string>();
+            var topBottomPaddingString = new string(' ', this.maxLineLength + boxSpacing.Left + boxSpacing.Right);
           
             for (var i = 0; i < boxSpacing.Top; i++)
             {
-                topSpacing.Add(new string(' ', this.maxLineLength));
+                topSpacing.Add(topBottomPaddingString);
             }
 
             for (var i = 0; i < boxSpacing.Bottom; i++)
             {
-                topSpacing.Add(new string(' ', this.maxLineLength));
+                bottomSpacing.Add(topBottomPaddingString);
             }
-
-            this.lines.InsertRange(0, topSpacing);
-            this.lines.AddRange(bottomSpacing);
 
             for (var i = 0; i < this.lines.Count; i++)
             {
                 this.lines[i] =
                     this.lines[i].PadLeft(this.lines[i].Length + boxSpacing.Left, ' ')
-                        .PadRight(Math.Max(this.maxLineLength, this.lines[i].Length) + boxSpacing.Right, ' ');
+                        .PadRight(this.maxLineLength + boxSpacing.Left + boxSpacing.Right, ' ');
             }
+
+            this.lines.InsertRange(0, topSpacing);                        
+            this.lines.AddRange(bottomSpacing);
         }
 
         #endregion

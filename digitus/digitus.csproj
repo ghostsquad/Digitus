@@ -41,10 +41,20 @@
   <ItemGroup>
     <Compile Include="EnumDisplayNameAttribute.cs" />
     <Compile Include="EnumExtensions.cs" />
+    <Compile Include="PlainTextStyling\Components\Border.cs" />
+    <Compile Include="PlainTextStyling\Components\Borders.cs" />
+    <Compile Include="PlainTextStyling\Components\BordersBuilder.cs" />
+    <Compile Include="PlainTextStyling\Components\BoxSpacing.cs" />
+    <Compile Include="PlainTextStyling\Components\BoxSpacingBuilder.cs" />
+    <Compile Include="PlainTextStyling\Components\FourSidedSide.cs" />
+    <Compile Include="PlainTextStyling\Components\IFourSided.cs" />
+    <Compile Include="PlainTextStyling\IBoxModel.cs" />
+    <Compile Include="PlainTextStyling\BoxStyleBuilder.cs" />
     <Compile Include="StringBuilderExtensions.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

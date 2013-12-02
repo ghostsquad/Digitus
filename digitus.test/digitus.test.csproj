@@ -6,8 +6,8 @@
     <ProjectGuid>{C3B94BE7-AECF-4727-868E-85F01ABE344A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>digitus.test</RootNamespace>
-    <AssemblyName>digitus.test</AssemblyName>
+    <RootNamespace>Digitus.Test</RootNamespace>
+    <AssemblyName>Digitus.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -59,6 +59,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="PlainTextStyling\BordersTests.cs" />
+    <Compile Include="PlainTextStyling\BoxSpacingTests.cs" />
+    <Compile Include="PlainTextStyling\BoxStyleBuilderTests.cs" />
     <Compile Include="StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EnumExtensionsTests.cs" />

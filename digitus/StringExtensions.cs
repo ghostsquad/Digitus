@@ -3,6 +3,9 @@
     using System;
     using System.Text;
 
+    using Digitus.PlainTextStyling;
+    using Digitus.PlainTextStyling.Components;
+
     /// <summary>
     ///     The string extensions.
     /// </summary>
@@ -30,12 +33,7 @@
         /// </returns>
         public static string WithNewLine(this string value)
         {
-            if (value == null)
-            {
-                return null;
-            }
-
-            return new StringBuilder(2).Append(value).Append(Environment.NewLine).ToString();
+            return value == null ? null : new StringBuilder(2).Append(value).Append(Environment.NewLine).ToString();
         }
 
         /// <summary>
@@ -56,8 +54,8 @@
         }
 
         /// <summary>
-        /// Wraps a string, using the wrapOn character as applicable position to wrap. 
-        /// Wraps occur as close to the maxLineLength without going over.
+        /// Wraps a string, using the wrapOn character as applicable position to wrap.
+        ///     Wraps occur as close to the maxLineLength without going over.
         /// </summary>
         /// <param name="value">
         /// The value.
@@ -73,10 +71,10 @@
         /// </returns>
         public static string Wrap(this string value, char wrapOn, int maxLineLength)
         {
-            var wrappedStringBuilder = new StringBuilder();            
+            var wrappedStringBuilder = new StringBuilder();
 
-            var startIndex = 0;
-            var lastIndexOfWrapOnCharacter = -1;
+            int startIndex = 0;
+            int lastIndexOfWrapOnCharacter = -1;
 
             for (int i = 0; i < value.Length; i++)
             {
@@ -101,7 +99,7 @@
                 // then we "continue" to avoid executing the remaining checks in the loop
                 if (i + 1 < value.Length && value.Substring(i, 2) == Environment.NewLine)
                 {
-                    wrappedStringBuilder.Append(value.Substring(startIndex, (++i + 1) - startIndex));                    
+                    wrappedStringBuilder.Append(value.Substring(startIndex, (++i + 1) - startIndex));
                     lastIndexOfWrapOnCharacter = -1;
                     while (i + 1 < value.Length && value[i + 1] == ' ')
                     {
@@ -129,7 +127,7 @@
                 if ((i - startIndex) >= maxLineLength && lastIndexOfWrapOnCharacter > 0)
                 {
                     wrappedStringBuilder.AppendLine(
-                        value.Substring(startIndex, lastIndexOfWrapOnCharacter - startIndex));                    
+                        value.Substring(startIndex, lastIndexOfWrapOnCharacter - startIndex));
 
                     // then we need to set our start index to the character after our lastIndexOfWrapChar
                     // at lastIndexOfWrapChar 2 (the space)

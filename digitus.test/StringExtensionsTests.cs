@@ -17,7 +17,7 @@
         #region Public Methods and Operators
 
         /// <summary>
-        /// The picky replace given exclude expect inside untouched.
+        ///     The picky replace given exclude expect inside untouched.
         /// </summary>
         [TestMethod]
         public void PickyReplaceGivenExcludeExpectInsideUntouched()
@@ -38,7 +38,7 @@
         }
 
         /// <summary>
-        /// The picky replace given include expect outside untouched.
+        ///     The picky replace given include expect outside untouched.
         /// </summary>
         [TestMethod]
         public void PickyReplaceGivenIncludeExpectOutsideUntouched()
@@ -59,13 +59,39 @@
         }
 
         /// <summary>
-        /// The picky replace given no start exclude expect all applicable for replacement.
+        /// The picky replace given no end exclude end not required expect all after start not applicable for replacement.
         /// </summary>
         [TestMethod]
-        public void PickyReplaceGivenNoStartExcludeExpectAllApplicableForReplacement()
+        public void PickyReplaceGivenNoEndExcludeEndNotRequiredExpectAllAfterStartNotApplicableForReplacement()
         {
             // arrange
-            const string Value = "aaa>aaaaaa";
+            const string Value = "aaa<aaaaaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = "bbb<aaaaaa";
+
+            // act
+            string actual = Value.PickyReplace(
+                Search, 
+                Replacement, 
+                Start, 
+                End, 
+                PickyReplaceOptions.ExcludeBetween | PickyReplaceOptions.EndNotRequired);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
+        /// The picky replace given no end exclude expect all applicable for replacement.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenNoEndExcludeExpectAllApplicableForReplacement()
+        {
+            // arrange
+            const string Value = "aaa<aaaaaa";
             const char Search = 'a';
             const char Replacement = 'b';
             const char Start = '<';
@@ -80,18 +106,44 @@
         }
 
         /// <summary>
-        /// The picky replace given no start include expect nothing applicable for replacement.
+        /// The picky replace given no end include end not required expect all after start applicable for replacement.
         /// </summary>
         [TestMethod]
-        public void PickyReplaceGivenNoStartIncludeExpectNothingApplicableForReplacement()
+        public void PickyReplaceGivenNoEndIncludeEndNotRequiredExpectAllAfterStartApplicableForReplacement()
         {
             // arrange
-            const string Value = "aaa>aaaaaa";
+            const string Value = "aaa<aaaaaa";
             const char Search = 'a';
             const char Replacement = 'b';
             const char Start = '<';
             const char End = '>';
-            const string Expected = Value;
+            const string Expected = "aaa<bbbbbb";
+
+            // act
+            string actual = Value.PickyReplace(
+                Search, 
+                Replacement, 
+                Start, 
+                End, 
+                PickyReplaceOptions.IncludeBetween | PickyReplaceOptions.EndNotRequired);
+
+            // assert
+            Assert.AreEqual(Expected, actual);
+        }
+
+        /// <summary>
+        /// The picky replace given no end include expect all applicable for replacement.
+        /// </summary>
+        [TestMethod]
+        public void PickyReplaceGivenNoEndIncludeExpectAllApplicableForReplacement()
+        {
+            // arrange
+            const string Value = "aaa<aaaaaa";
+            const char Search = 'a';
+            const char Replacement = 'b';
+            const char Start = '<';
+            const char End = '>';
+            const string Expected = "aaa<aaaaaa";
 
             // act
             string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.IncludeBetween);
@@ -101,18 +153,18 @@
         }
 
         /// <summary>
-        /// The picky replace given start no end exclude expect all after start not applicable for replacement.
+        /// The picky replace given no start exclude expect nothing applicable for replacement.
         /// </summary>
         [TestMethod]
-        public void PickyReplaceGivenStartNoEndExcludeExpectAllAfterStartNotApplicableForReplacement()
+        public void PickyReplaceGivenNoStartExcludeExpectNothingApplicableForReplacement()
         {
             // arrange
-            const string Value = "aaa<aaaaaa";
+            const string Value = "aaaaaa>aaa";
             const char Search = 'a';
             const char Replacement = 'b';
             const char Start = '<';
             const char End = '>';
-            const string Expected = "bbb<aaaaaa";
+            const string Expected = Value;
 
             // act
             string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.ExcludeBetween);
@@ -122,18 +174,18 @@
         }
 
         /// <summary>
-        /// The picky replace given start no end include expect all after start applicable for replacement.
+        ///     The picky replace given no start include expect nothing applicable for replacement.
         /// </summary>
         [TestMethod]
-        public void PickyReplaceGivenStartNoEndIncludeExpectAllAfterStartApplicableForReplacement()
+        public void PickyReplaceGivenNoStartIncludeExpectNothingApplicableForReplacement()
         {
             // arrange
-            const string Value = "aaa<aaaaaa";
+            const string Value = "aaaaaa>aaa";
             const char Search = 'a';
             const char Replacement = 'b';
             const char Start = '<';
             const char End = '>';
-            const string Expected = "aaa<bbbbbb";
+            const string Expected = Value;
 
             // act
             string actual = Value.PickyReplace(Search, Replacement, Start, End, PickyReplaceOptions.IncludeBetween);

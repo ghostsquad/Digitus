@@ -1,27 +1,36 @@
-﻿namespace Digitus.PlainTextStyling.Components
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="FourSidedSide.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The four sides.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.PlainTextStyling.Components
 {
     /// <summary>
-    /// The four sides.
+    ///     The four sides.
     /// </summary>
     public enum FourSidedSide
     {
         /// <summary>
-        /// The top.
+        ///     The top.
         /// </summary>
         Top, 
 
         /// <summary>
-        /// The bottom.
+        ///     The bottom.
         /// </summary>
         Bottom, 
 
         /// <summary>
-        /// The left.
+        ///     The left.
         /// </summary>
         Left, 
 
         /// <summary>
-        /// The right.
+        ///     The right.
         /// </summary>
         Right
     }

@@ -1,4 +1,13 @@
-﻿namespace Digitus.PlainTextStyling.Components
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BoxSpacing.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The box spacing base.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.PlainTextStyling.Components
 {
     /// <summary>
     ///     The box spacing base.

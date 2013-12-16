@@ -59,6 +59,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataStructures\MapTests.cs" />
+    <Compile Include="DataStructures\PriorityQueueTests.cs" />
+    <Compile Include="HelperClasses\Conversions.Test.cs" />
+    <Compile Include="HelperClasses\SortingTests.cs" />
     <Compile Include="PlainTextStyling\BordersTests.cs" />
     <Compile Include="PlainTextStyling\BoxSpacingTests.cs" />
     <Compile Include="PlainTextStyling\BoxStyleBuilderTests.cs" />

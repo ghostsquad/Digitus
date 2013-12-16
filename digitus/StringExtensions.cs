@@ -1,10 +1,16 @@
-﻿namespace Digitus
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StringExtensions.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The string extensions.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus
 {
     using System;
     using System.Text;
-
-    using Digitus.PlainTextStyling;
-    using Digitus.PlainTextStyling.Components;
 
     /// <summary>
     ///     The string extensions.

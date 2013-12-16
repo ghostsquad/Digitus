@@ -1,4 +1,13 @@
-﻿namespace Digitus.PlainTextStyling
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IBoxModel.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The BoxModel interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.PlainTextStyling
 {
     using Digitus.PlainTextStyling.Components;
 
@@ -10,7 +19,7 @@
         #region Public Properties
 
         /// <summary>
-        /// Gets the borders.
+        ///     Gets the borders.
         /// </summary>
         Borders Borders { get; }
 

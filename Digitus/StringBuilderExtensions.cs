@@ -1,4 +1,13 @@
-﻿namespace Digitus
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StringBuilderExtensions.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The string builder extensions.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus
 {
     using System;
     using System.Collections.Generic;
@@ -34,7 +43,7 @@
             IEnumerable<T> collection, 
             Func<T, string> method)
         {
-            foreach (var x in collection)
+            foreach (T x in collection)
             {
                 sb.Append(method(x));
             }
@@ -59,7 +68,7 @@
         /// </returns>
         public static StringBuilder AppendCollection<T>(this StringBuilder sb, IEnumerable<T> collection)
         {
-            foreach (var x in collection)
+            foreach (T x in collection)
             {
                 sb.Append(x);
             }

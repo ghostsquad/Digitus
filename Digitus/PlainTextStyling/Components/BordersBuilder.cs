@@ -1,4 +1,13 @@
-﻿namespace Digitus.PlainTextStyling.Components
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BordersBuilder.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The borders builder.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.PlainTextStyling.Components
 {
     /// <summary>
     ///     The borders builder.

@@ -1,14 +1,23 @@
-﻿namespace Digitus.PlainTextStyling.Components
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BoxSpacingBuilder.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The box spacing builder.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.PlainTextStyling.Components
 {
     /// <summary>
-    /// The box spacing builder.
+    ///     The box spacing builder.
     /// </summary>
     public class BoxSpacingBuilder
     {
         #region Fields
 
         /// <summary>
-        /// The box spacing.
+        ///     The box spacing.
         /// </summary>
         private readonly BoxSpacing boxSpacing;
 
@@ -17,7 +26,7 @@
         #region Constructors and Destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoxSpacingBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="BoxSpacingBuilder" /> class.
         /// </summary>
         public BoxSpacingBuilder()
         {
@@ -29,10 +38,10 @@
         #region Public Methods and Operators
 
         /// <summary>
-        /// The to box spacing.
+        ///     The to box spacing.
         /// </summary>
         /// <returns>
-        /// The <see cref="BoxSpacing"/>.
+        ///     The <see cref="BoxSpacing" />.
         /// </returns>
         public BoxSpacing ToBoxSpacing()
         {

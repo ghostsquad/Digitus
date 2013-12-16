@@ -1,4 +1,13 @@
-﻿namespace Digitus.PlainTextStyling.Components
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IFourSided.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The FourSided interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.PlainTextStyling.Components
 {
     /// <summary>
     /// The FourSided interface.
@@ -11,22 +20,22 @@
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the bottom.
+        ///     Gets or sets the bottom.
         /// </summary>
         T Bottom { get; set; }
 
         /// <summary>
-        /// Gets or sets the left.
+        ///     Gets or sets the left.
         /// </summary>
         T Left { get; set; }
 
         /// <summary>
-        /// Gets or sets the right.
+        ///     Gets or sets the right.
         /// </summary>
         T Right { get; set; }
 
         /// <summary>
-        /// Gets or sets the top.
+        ///     Gets or sets the top.
         /// </summary>
         T Top { get; set; }
 

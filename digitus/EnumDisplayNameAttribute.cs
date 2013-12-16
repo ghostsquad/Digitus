@@ -1,4 +1,13 @@
-﻿namespace Digitus
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EnumDisplayNameAttribute.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The enum display name attribute.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus
 {
     using System;
 

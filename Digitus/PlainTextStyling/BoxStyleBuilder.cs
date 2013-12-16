@@ -1,4 +1,13 @@
-﻿namespace Digitus.PlainTextStyling
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BoxStyleBuilder.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The element.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.PlainTextStyling
 {
     using System;
     using System.Collections.Generic;
@@ -89,8 +98,8 @@
             this.AddBoxSpacing(this.Margins);
 
             var valueBuilder = new StringBuilder();
-            var linesRemaining = this.lines.Count;
-            foreach (var line in this.lines)
+            int linesRemaining = this.lines.Count;
+            foreach (string line in this.lines)
             {
                 valueBuilder.Append(line);
                 linesRemaining--;
@@ -165,22 +174,26 @@
                 return;
             }
 
-            var borders = this.Borders;
+            Borders borders = this.Borders;
 
             // to add borders, we first need to add right/left borders (as it will change to total length of each line)
             // then we can add the top/bottom
-            var leftBorderChar = borders.Left == null ? string.Empty : borders.Left.Char.ToString(CultureInfo.CurrentCulture);
-            var rightBorderChar = borders.Right == null ? string.Empty : borders.Right.Char.ToString(CultureInfo.CurrentCulture);
+            string leftBorderChar = borders.Left == null
+                                        ? string.Empty
+                                        : borders.Left.Char.ToString(CultureInfo.CurrentCulture);
+            string rightBorderChar = borders.Right == null
+                                         ? string.Empty
+                                         : borders.Right.Char.ToString(CultureInfo.CurrentCulture);
 
-            for (var i = 0; i < this.lines.Count; i++)
+            for (int i = 0; i < this.lines.Count; i++)
             {
                 this.lines[i] = leftBorderChar + this.lines[i] + rightBorderChar;
             }
 
-            var maxBorderLength = this.lines[0].Length;
+            int maxBorderLength = this.lines[0].Length;
 
-            var topBorderLength = borders.Top.Size < 0 ? maxBorderLength : borders.Top.Size;
-            var bottomBorderLength = borders.Bottom.Size < 0 ? maxBorderLength : borders.Bottom.Size;
+            int topBorderLength = borders.Top.Size < 0 ? maxBorderLength : borders.Top.Size;
+            int bottomBorderLength = borders.Bottom.Size < 0 ? maxBorderLength : borders.Bottom.Size;
 
             this.lines.Insert(0, new string(borders.Top.Char, topBorderLength));
             this.lines.Add(new string(borders.Bottom.Char, bottomBorderLength));
@@ -207,25 +220,25 @@
             var topSpacing = new List<string>();
             var bottomSpacing = new List<string>();
             var topBottomPaddingString = new string(' ', this.maxLineLength + boxSpacing.Left + boxSpacing.Right);
-          
-            for (var i = 0; i < boxSpacing.Top; i++)
+
+            for (int i = 0; i < boxSpacing.Top; i++)
             {
                 topSpacing.Add(topBottomPaddingString);
             }
 
-            for (var i = 0; i < boxSpacing.Bottom; i++)
+            for (int i = 0; i < boxSpacing.Bottom; i++)
             {
                 bottomSpacing.Add(topBottomPaddingString);
             }
 
-            for (var i = 0; i < this.lines.Count; i++)
+            for (int i = 0; i < this.lines.Count; i++)
             {
                 this.lines[i] =
                     this.lines[i].PadLeft(this.lines[i].Length + boxSpacing.Left, ' ')
                         .PadRight(this.maxLineLength + boxSpacing.Left + boxSpacing.Right, ' ');
             }
 
-            this.lines.InsertRange(0, topSpacing);                        
+            this.lines.InsertRange(0, topSpacing);
             this.lines.AddRange(bottomSpacing);
         }
 

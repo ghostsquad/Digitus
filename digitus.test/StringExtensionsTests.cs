@@ -1,4 +1,13 @@
-﻿namespace Digitus.Test
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StringExtensionsTests.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The string extensions tests.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.Test
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -81,6 +90,25 @@
         }
 
         /// <summary>
+        /// The wrap given many spaces and new line expect no wrap.
+        /// </summary>
+        [TestMethod]
+        public void WrapGivenManySpacesAndNewLineExpectNoWrap()
+        {
+            // arrange
+            var expectedPart = new string(' ', 3);
+            string expected = expectedPart + Environment.NewLine;
+            string value = expected + expectedPart;
+            const int MaxLineLength = 3;
+
+            // act
+            string actual = value.Wrap(MaxLineLength);
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         ///     Given a string with multiple consecutive spaces,
         ///     When "Wrap()" invoked,
         ///     Expect TrimLeft() after NewLine.
@@ -100,6 +128,24 @@
 
             // assert
             Assert.AreEqual(ExpectedString, actualString);
+        }
+
+        /// <summary>
+        /// The wrap given many spaces expect wrap in middle.
+        /// </summary>
+        [TestMethod]
+        public void WrapGivenManySpacesExpectWrapInMiddle()
+        {
+            // arrange
+            var value = new string(' ', 7);
+            string expected = new string(' ', 3) + Environment.NewLine;
+            const int MaxLineLength = 3;
+
+            // act
+            string actual = value.Wrap(MaxLineLength);
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -201,37 +247,6 @@
 
             // assert
             Assert.AreEqual(expectedString, actualString);
-        }
-
-        [TestMethod]
-        public void WrapGivenManySpacesExpectWrapInMiddle()
-        {
-            // arrange
-            var value = new string(' ', 7);           
-            var expected = new string(' ', 3) + Environment.NewLine;
-            const int MaxLineLength = 3;
-
-            // act
-            var actual = value.Wrap(MaxLineLength);
-
-            // assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void WrapGivenManySpacesAndNewLineExpectNoWrap()
-        {
-            // arrange
-            var expectedPart = new string(' ', 3);
-            var expected = expectedPart + Environment.NewLine;
-            var value = expected + expectedPart;
-            const int MaxLineLength = 3;
-
-            // act
-            var actual = value.Wrap(MaxLineLength);
-
-            // assert
-            Assert.AreEqual(expected, actual);
         }
 
         #endregion

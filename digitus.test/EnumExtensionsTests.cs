@@ -1,11 +1,20 @@
-﻿namespace Digitus.Test
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EnumExtensionsTests.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The enum extensions.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.Test
 {
     using System.Diagnostics.CodeAnalysis;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// The enum extensions.
+    ///     The enum extensions.
     /// </summary>
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -14,7 +23,7 @@
         #region Constants
 
         /// <summary>
-        /// The expected display name.
+        ///     The expected display name.
         /// </summary>
         private const string ExpectedDisplayName = "My A";
 
@@ -23,18 +32,18 @@
         #region Enums
 
         /// <summary>
-        /// The my test enum.
+        ///     The my test enum.
         /// </summary>
         private enum MyTestEnum
         {
             /// <summary>
-            /// The a.
+            ///     The a.
             /// </summary>
             [EnumDisplayName(ExpectedDisplayName)]
             A, 
 
             /// <summary>
-            /// The b.
+            ///     The b.
             /// </summary>
             B
         }
@@ -44,7 +53,7 @@
         #region Public Methods and Operators
 
         /// <summary>
-        /// The display name_ given display name_ return expected.
+        ///     The display name_ given display name_ return expected.
         /// </summary>
         [TestMethod]
         public void DisplayNameGivenDisplayNameReturnExpected()
@@ -57,7 +66,7 @@
         }
 
         /// <summary>
-        /// The display name_ given no display name_ return enum to string.
+        ///     The display name_ given no display name_ return enum to string.
         /// </summary>
         [TestMethod]
         public void DisplayNameGivenNoDisplayNameReturnEnumToString()

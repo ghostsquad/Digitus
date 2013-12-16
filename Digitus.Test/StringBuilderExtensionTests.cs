@@ -1,18 +1,25 @@
-﻿namespace Digitus.Test
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StringBuilderExtensionTests.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The string builder extension tests.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.Test
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
-    using Digitus;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Ploeh.AutoFixture;
 
     /// <summary>
-    /// The string builder extension tests.
+    ///     The string builder extension tests.
     /// </summary>
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -21,7 +28,7 @@
         #region Public Methods and Operators
 
         /// <summary>
-        /// The append collection function delegate.
+        ///     The append collection function delegate.
         /// </summary>
         [TestMethod]
         public void AppendCollectionFunctionDelegate()
@@ -48,7 +55,7 @@
         }
 
         /// <summary>
-        /// The append collection given collection to append expect appended.
+        ///     The append collection given collection to append expect appended.
         /// </summary>
         [TestMethod]
         public void AppendCollectionGivenCollectionToAppendExpectAppended()
@@ -71,7 +78,7 @@
         }
 
         /// <summary>
-        /// The append collection given empty collection expect empty string.
+        ///     The append collection given empty collection expect empty string.
         /// </summary>
         [TestMethod]
         public void AppendCollectionGivenEmptyCollectionExpectEmptyString()
@@ -88,7 +95,7 @@
         }
 
         /// <summary>
-        /// The prepend given string expect new line before string.
+        ///     The prepend given string expect new line before string.
         /// </summary>
         [TestMethod]
         public void AppendLineBeforeGivenStringExpectNewLineBeforeString()

@@ -1,10 +1,19 @@
-﻿namespace Digitus
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EnumExtensions.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The enum extensions.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus
 {
     using System;
     using System.Linq;
 
     /// <summary>
-    /// The enum extensions.
+    ///     The enum extensions.
     /// </summary>
     public static class EnumExtensions
     {

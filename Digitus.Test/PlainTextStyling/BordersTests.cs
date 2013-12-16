@@ -1,4 +1,13 @@
-﻿namespace Digitus.Test.PlainTextStyling
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BordersTests.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The borders builder tests.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.Test.PlainTextStyling
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -27,7 +36,7 @@
         {
             var fixture = new Fixture();
 
-            foreach (var side in (FourSidedSide[])Enum.GetValues(typeof(FourSidedSide)))
+            foreach (FourSidedSide side in (FourSidedSide[])Enum.GetValues(typeof(FourSidedSide)))
             {
                 AssertBorderBuilderSide(side, fixture.Create<Border>());
             }
@@ -51,7 +60,7 @@
         /// </param>
         private static void AssertBorder(Borders borders, FourSidedSide side, Border expectedBorder)
         {
-            var propertyInfo = typeof(Borders).GetProperty(side.ToString());
+            PropertyInfo propertyInfo = typeof(Borders).GetProperty(side.ToString());
             var actualBorder = (Border)propertyInfo.GetGetMethod().Invoke(borders, null);
 
             Assert.AreEqual(expectedBorder.Char, actualBorder.Char);
@@ -70,16 +79,15 @@
         private static void AssertBorderBuilderSide(FourSidedSide side, Border expectedBorder)
         {
             var bordersBuilder = new BordersBuilder();
-            var methodName = "With" + side + "Border";
+            string methodName = "With" + side + "Border";
 
-            var methodTakesBorder = typeof(BordersBuilder).GetMethod(methodName, new[] { typeof(Border) });
-            var methodTakesBorderParts = typeof(BordersBuilder).GetMethod(
-                methodName,
+            MethodInfo methodTakesBorder = typeof(BordersBuilder).GetMethod(methodName, new[] { typeof(Border) });
+            MethodInfo methodTakesBorderParts = typeof(BordersBuilder).GetMethod(
+                methodName, 
                 new[] { typeof(char), typeof(int) });
 
             var builderResultFromBorder =
-                (BordersBuilder)
-                methodTakesBorder.Invoke(bordersBuilder, new object[] { expectedBorder });
+                (BordersBuilder)methodTakesBorder.Invoke(bordersBuilder, new object[] { expectedBorder });
             var builderResultFromParts =
                 (BordersBuilder)
                 methodTakesBorderParts.Invoke(bordersBuilder, new object[] { expectedBorder.Char, expectedBorder.Size });

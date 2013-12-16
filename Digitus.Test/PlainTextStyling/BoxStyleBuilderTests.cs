@@ -1,4 +1,13 @@
-﻿namespace Digitus.Test.PlainTextStyling
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BoxStyleBuilderTests.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The box decorator tests.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Digitus.Test.PlainTextStyling
 {
     using System;
     using System.Collections.Generic;
@@ -156,7 +165,7 @@
         }
 
         /// <summary>
-        /// The given padding expect add box spacing called.
+        ///     The given padding expect add box spacing called.
         /// </summary>
         [TestMethod]
         public void GivenPaddingExpectAddBoxSpacingCalled()

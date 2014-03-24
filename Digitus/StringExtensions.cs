@@ -26,65 +26,7 @@ namespace Digitus
 
         #endregion
 
-        #region Public Methods and Operators
-
-        /// <summary>
-        /// The picky replace. Depending on options, excludes or only includes certain substrings based on start and end or strings.
-        /// </summary>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        /// <param name="search">
-        /// The search string.
-        /// </param>
-        /// <param name="replace">
-        /// The replacement string.
-        /// </param>
-        /// <param name="start">
-        /// The start for include/exclude.
-        /// </param>
-        /// <param name="end">
-        /// The end for include/exclude.
-        /// </param>
-        /// <param name="options">
-        /// The options.
-        /// </param>        
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        public static string PickyReplace(this string value, string search, string replace, string start, string end, PickyReplaceOptions options)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// The picky replace. Depending on options, excludes or only includes certain substrings based on start and end or characters.
-        /// </summary>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        /// <param name="search">
-        /// The search string.
-        /// </param>
-        /// <param name="replace">
-        /// The replacement string.
-        /// </param>
-        /// <param name="start">
-        /// The start for include/exclude.
-        /// </param>
-        /// <param name="end">
-        /// The end for include/exclude.
-        /// </param>
-        /// <param name="options">
-        /// The options.
-        /// </param>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        public static string PickyReplace(this string value, char search, char replace, char start, char end, PickyReplaceOptions options)
-        {
-            throw new NotImplementedException();
-        }
+        #region Public Methods and Operators        
 
         /// <summary>
         /// The with new line.

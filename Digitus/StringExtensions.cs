@@ -1,15 +1,14 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="StringExtensions.cs" company="">
-//   
 // </copyright>
 // <summary>
 //   The string extensions.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Digitus
 {
     using System;
+    using System.Globalization;
     using System.Text;
 
     /// <summary>
@@ -26,7 +25,60 @@ namespace Digitus
 
         #endregion
 
-        #region Public Methods and Operators        
+        #region Public Methods and Operators
+
+        /// <summary>
+        /// Use the current thread's culture info for conversion
+        /// </summary>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public static string ToTitleCase(this string value)
+        {
+            CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+            string titleCaseString = cultureInfo.TextInfo.ToTitleCase(value.ToLower());
+            return titleCaseString;
+        }
+
+        /// <summary>
+        /// Overload which uses the culture info with the specified name
+        /// </summary>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        /// <param name="cultureInfoName">
+        /// The culture Info Name.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public static string ToTitleCase(this string value, string cultureInfoName)
+        {
+            var cultureInfo = new CultureInfo(cultureInfoName);
+            string titleCaseString = cultureInfo.TextInfo.ToTitleCase(value.ToLower());
+            return titleCaseString;
+        }
+
+        /// <summary>
+        /// Overload which uses the specified culture info
+        /// </summary>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        /// <param name="cultureInfo">
+        /// The culture Info.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public static string ToTitleCase(this string value, CultureInfo cultureInfo)
+        {
+            string titleCaseString = cultureInfo.TextInfo.ToTitleCase(value.ToLower());
+            return titleCaseString;
+        }
 
         /// <summary>
         /// The with new line.

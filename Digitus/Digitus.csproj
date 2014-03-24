@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="DataStructures\IMap.cs" />
     <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="ObjectExtensions.cs" />
     <Compile Include="PickyReplaceOptions.cs" />
     <Compile Include="DataStructures\IPriorityQueue.cs" />
     <Compile Include="DataStructures\IQueue.cs" />
